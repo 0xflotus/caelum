@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace Caelum
 {
+
     public class WetterEintrag
     {
         const float KELVINKONSTANTE = 273.15f;
@@ -20,6 +21,7 @@ namespace Caelum
             "wolkenbedeckt",
             "leichte schneeschauer",
             "trüb",
+            "dunst",
         };
 
         static Dictionary<String, char> weathers = new Dictionary<string, char>()
@@ -34,6 +36,7 @@ namespace Caelum
                 { weatherPossible[7], '\uf07d'},
                 { weatherPossible[8], '\uf00a'},
                 { weatherPossible[9], '\uf003' },
+                { weatherPossible[10], '\uf003' },
             };
 
         static Dictionary<String, char> weathersByNight = new Dictionary<string, char>()
@@ -48,9 +51,10 @@ namespace Caelum
                 { weatherPossible[7], '\uf080'},
                 { weatherPossible[8], '\uf02a'},
                 { weatherPossible[9], '\uf04a' },
+                { weatherPossible[10], '\uf04a' },
         };
 
-        static Dictionary<String, char> directions = new Dictionary<string, char>()
+        static Dictionary<String, char> directions = new Dictionary<string, char>
         {
             { "N", '\uf044' },
             { "W", '\uf04d' },
@@ -70,24 +74,24 @@ namespace Caelum
             { "WNW", '\uf04d' }
         };
 
-        static List<Tuple<String, String, String>> tuples = new List<Tuple<String, String, String>>()
+        static List<(String abkInt, String abkGer, String nameGer)> tuples = new List<(string, string, string)>
         {
-            Tuple.Create("N","N","Norden"),
-            Tuple.Create("S","S","Sueden"),
-            Tuple.Create("W","W","Westen"),
-            Tuple.Create("E","O","Osten"),
-            Tuple.Create("NE","NO","Nordosten"),
-            Tuple.Create("NW","NW","Nordwesten"),
-            Tuple.Create("NNW","NNW","Nordnordwesten"),
-            Tuple.Create("NNE","NNO","Nordnordosten"),
-            Tuple.Create("SE","SO","Suedosten"),
-            Tuple.Create("SW","SW","Suedwesten"),
-            Tuple.Create("SSW","SSW","Suedsuedwesten"),
-            Tuple.Create("SSE","SSO","Suedsuedosten"),
-            Tuple.Create("ENE","ONO","Ostnordosten"),
-            Tuple.Create("WSW","WSW","Westsuedwesten"),
-            Tuple.Create("ESE","OSO","Ostsuedosten"),
-            Tuple.Create("WNW","WNW","Westnordwesten"),
+            ("N", "N", "Norden"),
+            ("S", "S", "Sueden"),
+            ("W", "W", "Westen"),
+            ("E", "O", "Osten"),
+            ("NE", "NO", "Nordosten"),
+            ("NW", "NW", "Nordwesten"),
+            ("NNW", "NNW", "Nordnordwesten"),
+            ("NNE", "NNO", "Nordnordosten"),
+            ("SE", "SO", "Suedosten"),
+            ("SW", "SW", "Suedwesten"),
+            ("SSW", "SSW", "Suedsuedwesten"),
+            ("SSE", "SSO", "Suedsuedosten"),
+            ("ENE", "ONO", "Ostnordosten"),
+            ("WSW", "WSW", "Westsuedwesten"),
+            ("ESE", "OSO", "Ostsuedosten"),
+            ("WNW", "WNW", "Westnordwesten"),
         };
 
         public readonly int Id;
@@ -132,6 +136,6 @@ namespace Caelum
             => night ? weathersByNight.TryGetValue(weather.ToLower(), out var late) ?
                 late : '\uf081' : weathers.TryGetValue(weather.ToLower(), out var res) ? res : '\uf031';
         public static char ConvertDirectionSymbols(String direction) => directions.TryGetValue(direction.ToUpper(), out var res) ? res : ' ';
-        public static String ConvertTuple(String s, bool abk) => abk ? tuples.Find(t => t.Item1 == s).Item2 : tuples.Find(t => t.Item1 == s).Item3;
+        public static String ConvertTuple(String s, bool abk) => abk ? tuples.Find(t => t.abkInt == s).abkGer : tuples.Find(t => t.abkInt == s).nameGer;
     }
 }
