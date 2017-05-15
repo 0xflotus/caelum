@@ -1,0 +1,14 @@
+﻿<Properties StartupConfiguration="{3726094B-AB95-45CA-82C1-B5C52E88B859}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Caelum/DBA.cs">
+    <Files>
+      <File FileName="Caelum/DBA.cs" Line="61" Column="69" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Caelum PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.52DA5E62-6D14-4019-B09B-DABD70ED6051" />
+  <MultiItemStartupConfigurations />
+</Properties>
